@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KingCloud — Settings</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/settings.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar" id="sidebar" aria-label="Navigation">
+    <a href="dashboard.html" class="sidebar-logo" aria-label="KingCloud home">
+      <img src="assets/logo.svg" alt="KingCloud Logo" width="32" height="32" />
+      <span class="sidebar-logo-text">King<span>Cloud</span></span>
+    </a>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <span class="nav-section-label">Storage</span>
+      <a href="dashboard.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Dashboard
+      </a>
+      <a href="settings.html" class="nav-item active" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-mini" id="user-mini" tabindex="0" aria-label="User info" role="img"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();}">
+        <div class="avatar" id="user-avatar" aria-hidden="true"></div>
+        <div class="user-mini-info">
+          <div class="user-mini-name" id="user-name"></div>
+          <div class="user-mini-role">Administrator</div>
+        </div>
+      </div>
+      <button class="nav-item" id="btn-logout" aria-label="Sign out" style="margin-top:4px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Sidebar overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- ── Main Content ── -->
+  <div class="main-content" role="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <span style="font-size:1.05rem;font-weight:600;color:var(--text-primary);">Settings</span>
+    </header>
+
+    <!-- Settings layout -->
+    <div class="settings-layout">
+
+      <!-- Settings sidebar nav -->
+      <aside class="settings-nav" aria-label="Settings navigation">
+        <div class="settings-nav-inner">
+          <span class="settings-nav-label">Settings</span>
+          <button class="settings-nav-item active" data-section="appearance">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            Appearance
+          </button>
+          <button class="settings-nav-item" data-section="account">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Account
+          </button>
+          <button class="settings-nav-item" data-section="storage">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            Storage
+          </button>
+          <button class="settings-nav-item" data-section="advanced">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Advanced
+          </button>
+        </div>
+      </aside>
+
+      <!-- Settings content -->
+      <div class="settings-content">
+
+        <!-- ── Appearance ── -->
+        <section class="settings-section active" data-section="appearance">
+          <h2 class="settings-section-title">Appearance</h2>
+          <p class="settings-section-desc">Customize how KingCloud looks across all pages.</p>
+
+          <!-- Theme -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="settings-card-title">Theme</span>
+            </div>
+            <div class="settings-card-body">
+              <div class="theme-grid">
+                <div class="theme-option active" data-theme-value="light" role="button" tabindex="0" aria-label="Light theme">
+                  <div class="theme-preview">
+                    <div class="theme-preview-block" style="background:#ffffff;"></div>
+                    <div class="theme-preview-block" style="background:#f5f7fa;"></div>
+                    <div class="theme-preview-block" style="background:#6c63ff;"></div>
+                    <div class="theme-preview-block" style="background:#e2e8f0;"></div>
+                  </div>
+                  <div class="theme-name">Light</div>
+                </div>
+                <div class="theme-option" data-theme-value="dark" role="button" tabindex="0" aria-label="Dark theme">
+                  <div class="theme-preview">
+                    <div class="theme-preview-block" style="background:#1e1e1e;"></div>
+                    <div class="theme-preview-block" style="background:#0f0f0f;"></div>
+                    <div class="theme-preview-block" style="background:#7c73ff;"></div>
+                    <div class="theme-preview-block" style="background:#2d2d2d;"></div>
+                  </div>
+                  <div class="theme-name">Dark</div>
+                </div>
+                <div class="theme-option" data-theme-value="midnight" role="button" tabindex="0" aria-label="Midnight Blue theme">
+                  <div class="theme-preview">
+                    <div class="theme-preview-block" style="background:#111827;"></div>
+                    <div class="theme-preview-block" style="background:#0a0e1a;"></div>
+                    <div class="theme-preview-block" style="background:#3b82f6;"></div>
+                    <div class="theme-preview-block" style="background:#1e2d4a;"></div>
+                  </div>
+                  <div class="theme-name">Midnight</div>
+                </div>
+                <div class="theme-option" data-theme-value="forest" role="button" tabindex="0" aria-label="Forest Green theme">
+                  <div class="theme-preview">
+                    <div class="theme-preview-block" style="background:#ffffff;"></div>
+                    <div class="theme-preview-block" style="background:#f0fdf4;"></div>
+                    <div class="theme-preview-block" style="background:#16a34a;"></div>
+                    <div class="theme-preview-block" style="background:#bbf7d0;"></div>
+                  </div>
+                  <div class="theme-name">Forest</div>
+                </div>
+                <div class="theme-option" data-theme-value="sunset" role="button" tabindex="0" aria-label="Sunset Orange theme">
+                  <div class="theme-preview">
+                    <div class="theme-preview-block" style="background:#ffffff;"></div>
+                    <div class="theme-preview-block" style="background:#fff7ed;"></div>
+                    <div class="theme-preview-block" style="background:#ea580c;"></div>
+                    <div class="theme-preview-block" style="background:#fed7aa;"></div>
+                  </div>
+                  <div class="theme-name">Sunset</div>
+                </div>
+                <div class="theme-option" data-theme-value="rose" role="button" tabindex="0" aria-label="Rose Pink theme">
+                  <div class="theme-preview">
+                    <div class="theme-preview-block" style="background:#ffffff;"></div>
+                    <div class="theme-preview-block" style="background:#fff1f2;"></div>
+                    <div class="theme-preview-block" style="background:#e11d48;"></div>
+                    <div class="theme-preview-block" style="background:#fecdd3;"></div>
+                  </div>
+                  <div class="theme-name">Rose</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Font size -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="settings-card-title">Font Size</span>
+            </div>
+            <div class="settings-card-body">
+              <div class="fontsize-options">
+                <div class="fontsize-option" data-fontsize-value="small" role="button" tabindex="0" style="font-size:12px;" aria-label="Small font size">Small</div>
+                <div class="fontsize-option active" data-fontsize-value="medium" role="button" tabindex="0" style="font-size:14px;" aria-label="Medium font size">Medium</div>
+                <div class="fontsize-option" data-fontsize-value="large" role="button" tabindex="0" style="font-size:16px;" aria-label="Large font size">Large</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Other toggles -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="settings-card-title">Display Options</span>
+            </div>
+            <div class="settings-card-body">
+              <div class="setting-row">
+                <div class="setting-row-info">
+                  <div class="setting-row-label">Compact Mode</div>
+                  <div class="setting-row-desc">Reduce card and grid spacing</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="compact-toggle" aria-label="Compact mode" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="setting-row">
+                <div class="setting-row-info">
+                  <div class="setting-row-label">Animations</div>
+                  <div class="setting-row-desc">Enable UI transitions and animations</div>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="anim-toggle" checked aria-label="Enable animations" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Account ── -->
+        <section class="settings-section" data-section="account">
+          <h2 class="settings-section-title">Account</h2>
+          <p class="settings-section-desc">Manage your username, password, and profile.</p>
+
+          <!-- Avatar / Profile -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="settings-card-title">Profile</span>
+            </div>
+            <div class="settings-card-body">
+              <div class="avatar-section">
+                <div class="avatar avatar-large" id="avatar-large" aria-hidden="true"></div>
+                <div>
+                  <div style="font-weight:600;color:var(--text-primary);" id="account-name"></div>
+                  <div class="text-sm text-muted">Administrator</div>
+                </div>
+              </div>
+              <label class="form-label">Avatar Color</label>
+              <div class="color-swatches" role="group" aria-label="Avatar color">
+                <div class="color-swatch" data-color="#6c63ff" style="background:#6c63ff;" tabindex="0" role="button" aria-label="Purple"></div>
+                <div class="color-swatch" data-color="#3b82f6" style="background:#3b82f6;" tabindex="0" role="button" aria-label="Blue"></div>
+                <div class="color-swatch" data-color="#22c55e" style="background:#22c55e;" tabindex="0" role="button" aria-label="Green"></div>
+                <div class="color-swatch" data-color="#f59e0b" style="background:#f59e0b;" tabindex="0" role="button" aria-label="Amber"></div>
+                <div class="color-swatch" data-color="#ef4444" style="background:#ef4444;" tabindex="0" role="button" aria-label="Red"></div>
+                <div class="color-swatch" data-color="#ec4899" style="background:#ec4899;" tabindex="0" role="button" aria-label="Pink"></div>
+                <div class="color-swatch" data-color="#8b5cf6" style="background:#8b5cf6;" tabindex="0" role="button" aria-label="Violet"></div>
+                <div class="color-swatch" data-color="#14b8a6" style="background:#14b8a6;" tabindex="0" role="button" aria-label="Teal"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Change username -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="settings-card-title">Change Username</span>
+            </div>
+            <div class="settings-card-body">
+              <form id="form-username" novalidate>
+                <div class="form-group">
+                  <label class="form-label" for="new-username">New Username</label>
+                  <input type="text" id="new-username" class="form-input" placeholder="Enter new username" autocomplete="username" minlength="3" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm" id="btn-save-username">Save Username</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Change password -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="settings-card-title">Change Password</span>
+            </div>
+            <div class="settings-card-body">
+              <form id="form-password" novalidate>
+                <div class="form-group">
+                  <label class="form-label" for="current-pass">Current Password</label>
+                  <input type="password" id="current-pass" class="form-input" placeholder="Enter current password" autocomplete="current-password" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="new-pass">New Password</label>
+                  <input type="password" id="new-pass" class="form-input" placeholder="Enter new password (min 6 chars)" autocomplete="new-password" minlength="6" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="confirm-pass">Confirm New Password</label>
+                  <input type="password" id="confirm-pass" class="form-input" placeholder="Confirm new password" autocomplete="new-password" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm" id="btn-save-password">Update Password</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Storage ── -->
+        <section class="settings-section" data-section="storage">
+          <h2 class="settings-section-title">Storage</h2>
+          <p class="settings-section-desc">Configure your Storj DCS S3-compatible credentials.</p>
+
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="settings-card-title">Storj Credentials</span>
+              <span class="storj-status unknown" id="storj-status">● Not tested</span>
+            </div>
+            <div class="settings-card-body">
+              <div class="form-group">
+                <label class="form-label" for="storj-endpoint">Gateway Endpoint <span style="color:var(--danger)">*</span></label>
+                <input type="url" id="storj-endpoint" class="form-input" placeholder="https://gateway.storjshare.io" />
+                <p class="text-xs text-muted mt-4">Your Storj S3-compatible gateway URL (e.g. <code>https://gateway.storjshare.io</code>)</p>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="storj-access-key">Access Key <span style="color:var(--danger)">*</span></label>
+                <input type="text" id="storj-access-key" class="form-input" placeholder="Access key ID" autocomplete="off" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="storj-secret-key">Secret Key <span style="color:var(--danger)">*</span></label>
+                <input type="password" id="storj-secret-key" class="form-input" placeholder="Secret access key" autocomplete="new-password" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="storj-bucket">Bucket Name <span style="color:var(--danger)">*</span></label>
+                <input type="text" id="storj-bucket" class="form-input" placeholder="my-bucket" autocomplete="off" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="storj-region">Region</label>
+                <input type="text" id="storj-region" class="form-input" placeholder="us-east-1" value="us-east-1" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="storj-limit">Storage Limit (GB)</label>
+                <input type="number" id="storj-limit" class="form-input" placeholder="150" value="150" min="1" />
+              </div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+                <button class="btn btn-primary btn-sm" id="btn-save-storj">Save Credentials</button>
+                <button class="btn btn-secondary btn-sm" id="btn-test-storj">Test Connection</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- CORS info card -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="settings-card-title">⚠️ CORS Configuration Required</span>
+            </div>
+            <div class="settings-card-body">
+              <p class="text-sm text-secondary" style="margin-bottom:12px;">
+                For this app to access your Storj bucket from the browser, you must configure CORS on your bucket.
+                Add the following CORS rule in your Storj bucket settings:
+              </p>
+              <pre style="background:var(--bg-secondary);padding:14px;border-radius:var(--radius-sm);font-size:0.78rem;overflow-x:auto;border:1px solid var(--border);"><code>[
+  {
+    "AllowedOrigins": ["*"],
+    "AllowedMethods": ["GET", "PUT", "DELETE", "HEAD"],
+    "AllowedHeaders": ["*"],
+    "ExposeHeaders":  ["ETag", "Content-Length", "Content-Type"],
+    "MaxAgeSeconds":  3600
+  }
+]</code></pre>
+              <p class="text-xs text-muted mt-8">
+                For production, replace <code>"*"</code> in AllowedOrigins with your specific domain.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Advanced ── -->
+        <section class="settings-section" data-section="advanced">
+          <h2 class="settings-section-title">Advanced</h2>
+          <p class="settings-section-desc">Session, backup, and data management options.</p>
+
+          <!-- Session timeout -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="settings-card-title">Session Timeout</span>
+            </div>
+            <div class="settings-card-body">
+              <div class="form-group">
+                <label class="form-label" for="session-timeout">Auto logout after (minutes, 0 = never)</label>
+                <select id="session-timeout" class="form-select">
+                  <option value="0">Never</option>
+                  <option value="15">15 minutes</option>
+                  <option value="30">30 minutes</option>
+                  <option value="60">1 hour</option>
+                  <option value="120">2 hours</option>
+                  <option value="480">8 hours</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backup -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="settings-card-title">Data Backup</span>
+            </div>
+            <div class="settings-card-body">
+              <p class="text-sm text-secondary" style="margin-bottom:14px;">
+                Export your credentials and settings as a JSON backup file.
+              </p>
+              <button class="btn btn-secondary btn-sm" id="btn-export-backup">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export Backup
+              </button>
+            </div>
+          </div>
+
+          <!-- Danger zone -->
+          <div class="settings-card danger-zone">
+            <div class="settings-card-header">
+              <span class="settings-card-title">Danger Zone</span>
+            </div>
+            <div class="settings-card-body">
+              <p class="text-sm text-secondary" style="margin-bottom:14px;">
+                This will clear all KingCloud data from your browser (credentials, session, settings) and log you out.
+                Your actual files in Storj are not affected.
+              </p>
+              <button class="btn btn-danger btn-sm" id="btn-clear-data">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                Clear All Data &amp; Logout
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /settings-content -->
+    </div><!-- /settings-layout -->
+
+  </div><!-- /main-content -->
+</div><!-- /app-layout -->
+
+<!-- Toast container -->
+<div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+<script src="js/auth.js"></script>
+<script src="js/storj.js"></script>
+<script src="js/settings.js"></script>
+</body>
+</html>

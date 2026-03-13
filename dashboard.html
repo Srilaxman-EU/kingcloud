@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KingCloud — Dashboard</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar" id="sidebar" aria-label="Navigation">
+    <a href="dashboard.html" class="sidebar-logo" aria-label="KingCloud home">
+      <img src="assets/logo.svg" alt="KingCloud Logo" width="32" height="32" />
+      <span class="sidebar-logo-text">King<span>Cloud</span></span>
+    </a>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <span class="nav-section-label">Storage</span>
+      <a href="dashboard.html" class="nav-item active" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Dashboard
+      </a>
+      <a href="settings.html" class="nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-mini" id="user-mini" tabindex="0" aria-label="User menu" role="button"
+        onclick="this.nextElementSibling && this.nextElementSibling.focus()"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();}">
+        <div class="avatar" id="user-avatar" aria-hidden="true"></div>
+        <div class="user-mini-info">
+          <div class="user-mini-name" id="user-name"></div>
+          <div class="user-mini-role">Administrator</div>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <button class="nav-item" id="btn-logout" aria-label="Sign out" style="margin-top:4px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Sidebar overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- ── Main Content ── -->
+  <div class="main-content" role="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <div class="topbar-search" role="search">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="search-input" placeholder="Search files…" aria-label="Search files" />
+      </div>
+
+      <div class="topbar-actions">
+        <button class="btn btn-primary btn-sm" id="btn-upload" aria-label="Upload files">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Upload
+        </button>
+        <a href="settings.html" class="btn-icon" aria-label="Settings" title="Settings">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Page body -->
+    <div class="page-body">
+
+      <!-- Page header -->
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">My Files</h1>
+          <p class="page-subtitle" id="file-count">Loading…</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-secondary btn-sm" id="btn-refresh" aria-label="Refresh files" title="Refresh">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Storage bar -->
+      <div class="storage-bar-wrap" aria-label="Storage usage">
+        <span class="storage-label">Storage</span>
+        <div class="progress-bar-wrap" style="flex:1;" role="progressbar" aria-label="Storage used">
+          <div class="progress-bar" id="storage-bar" style="width:0%"></div>
+        </div>
+        <span class="storage-used" id="storage-text">—</span>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="file-toolbar" role="toolbar" aria-label="File controls">
+        <div class="file-toolbar-left">
+          <label class="form-label" for="sort-select" style="margin:0;white-space:nowrap;">Sort by</label>
+          <select class="sort-select" id="sort-select" aria-label="Sort files">
+            <option value="date-desc">Newest first</option>
+            <option value="date-asc">Oldest first</option>
+            <option value="name-asc">Name A–Z</option>
+            <option value="name-desc">Name Z–A</option>
+            <option value="size-desc">Largest first</option>
+            <option value="size-asc">Smallest first</option>
+          </select>
+        </div>
+        <div class="file-toolbar-right">
+          <div class="view-toggle" role="group" aria-label="View mode">
+            <button class="btn-icon active" id="view-grid" title="Grid view" aria-pressed="true" aria-label="Grid view">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </button>
+            <button class="btn-icon" id="view-list" title="List view" aria-pressed="false" aria-label="List view">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- File container -->
+      <div id="file-container" class="file-grid" aria-label="Files" aria-live="polite"></div>
+
+      <!-- Empty state -->
+      <div id="empty-state" class="empty-state" style="display:none;" aria-live="polite">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>
+        <h3>No Files</h3>
+        <p>Your bucket is empty. Upload your first file!</p>
+        <button class="btn btn-primary" id="btn-upload-empty">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Upload Files
+        </button>
+      </div>
+
+    </div><!-- /page-body -->
+  </div><!-- /main-content -->
+
+</div><!-- /app-layout -->
+
+<!-- Hidden file input -->
+<input type="file" id="file-input" multiple style="display:none;" aria-hidden="true" />
+
+<!-- Drag overlay -->
+<div class="drop-overlay" id="drop-overlay" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+  Drop files to upload
+</div>
+
+<!-- Upload progress panel -->
+<div class="upload-progress-panel" id="upload-panel" role="status" aria-live="polite">
+  <div class="upload-progress-header">
+    <span>Uploading files…</span>
+    <button class="btn-icon" id="upload-panel-close" aria-label="Close upload panel">✕</button>
+  </div>
+  <div id="upload-items"></div>
+</div>
+
+<!-- Rename Modal -->
+<div class="modal-overlay" id="rename-modal" role="dialog" aria-modal="true" aria-labelledby="rename-modal-title">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="rename-modal-title">Rename File</span>
+      <button class="btn-icon" id="btn-rename-cancel" aria-label="Close">✕</button>
+    </div>
+    <p class="text-sm text-secondary" style="margin-bottom:14px;">
+      Renaming: <strong id="rename-current"></strong>
+    </p>
+    <div class="form-group">
+      <label class="form-label" for="rename-input">New name</label>
+      <input type="text" id="rename-input" class="form-input rename-input" placeholder="Enter new file name" />
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="btn-rename-cancel-footer">Cancel</button>
+      <button class="btn btn-primary" id="btn-rename-save">Rename</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+<script src="js/auth.js"></script>
+<script src="js/storj.js"></script>
+<script>
+  // Wire up secondary cancel button
+  document.getElementById('btn-rename-cancel-footer').addEventListener('click', () => {
+    document.getElementById('rename-modal').classList.remove('active');
+  });
+  // Wire up empty state upload button
+  document.getElementById('btn-upload-empty').addEventListener('click', () => {
+    document.getElementById('file-input').click();
+  });
+</script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
